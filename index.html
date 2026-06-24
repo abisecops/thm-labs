@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDBC Pre-Security & Network Fundamentals - Official Learning Roadmap</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1729 0%, #1a2b4d 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #00d9ff;
+            margin-bottom: 5px;
+        }
+
+        .institution {
+            font-size: 1em;
+            color: #66d9ff;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+
+        .tagline {
+            margin-top: 20px;
+            color: #66d9ff;
+            font-size: 0.95em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .header-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #028090, #00a896);
+            margin: 20px auto 30px;
+        }
+
+        .diagram-section {
+            background: rgba(30, 39, 97, 0.6);
+            border: 2px solid #028090;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .diagram-section h2 {
+            color: #00d9ff;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .section-card {
+            background: linear-gradient(135deg, rgba(2, 128, 144, 0.2), rgba(0, 168, 150, 0.2));
+            border: 2px solid #028090;
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        .section-card:nth-child(1) { animation-delay: 0.1s; }
+        .section-card:nth-child(2) { animation-delay: 0.2s; }
+        .section-card:nth-child(3) { animation-delay: 0.3s; }
+        .section-card:nth-child(4) { animation-delay: 0.4s; }
+        .section-card:nth-child(5) { animation-delay: 0.5s; }
+        .section-card:nth-child(6) { animation-delay: 0.6s; }
+        .section-card:nth-child(7) { animation-delay: 0.7s; }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            border-color: #00d9ff;
+            background: linear-gradient(135deg, rgba(2, 128, 144, 0.4), rgba(0, 168, 150, 0.4));
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #028090, #00a896);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #00d9ff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .rooms-list {
+            margin-top: 15px;
+        }
+
+        .room-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .room-item:hover {
+            background: rgba(0, 168, 150, 0.3);
+            padding-left: 15px;
+        }
+
+        .room-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 1.1em;
+        }
+
+        .room-name {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            flex: 1;
+        }
+
+        .room-link {
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            background: rgba(0, 168, 150, 0.1);
+            border-radius: 4px;
+        }
+
+        .room-link:hover {
+            color: #00a896;
+            background: rgba(0, 168, 150, 0.2);
+            gap: 8px;
+        }
+
+        .external-icon {
+            font-size: 0.8em;
+        }
+
+        .tools-section {
+            background: rgba(30, 39, 97, 0.6);
+            border: 2px solid #028090;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tools-section h2 {
+            color: #00d9ff;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: rgba(0, 128, 144, 0.1);
+            border: 2px solid #028090;
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            border-color: #00d9ff;
+            background: rgba(0, 128, 144, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tool-icon {
+            font-size: 2em;
+        }
+
+        .tool-header h3 {
+            color: #00d9ff;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .tool-description {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .command-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #00a896;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .command-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        .command-box code {
+            color: #00d9ff;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+
+        .cmd-desc {
+            color: #66d9ff;
+            font-size: 0.8em;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .skills-section {
+            background: rgba(30, 39, 97, 0.6);
+            border: 2px solid #028090;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .skills-section h3 {
+            color: #00d9ff;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: rgba(0, 168, 150, 0.1);
+            border-left: 4px solid #00a896;
+            padding: 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 168, 150, 0.2);
+            border-left-color: #00d9ff;
+            transform: translateX(5px);
+        }
+
+        .skill-item strong {
+            color: #00d9ff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .skill-item p {
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+
+        .future-section {
+            background: rgba(232, 115, 0, 0.1);
+            border: 2px solid #e87300;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .future-section h3 {
+            color: #ff9d1f;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .future-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #e87300;
+        }
+
+        .future-item strong {
+            color: #ff9d1f;
+        }
+
+        .future-item p {
+            color: #b0b0b0;
+            margin-top: 5px;
+            font-size: 0.95em;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(2, 128, 144, 0.3), rgba(0, 168, 150, 0.3));
+            border: 2px solid #00a896;
+            border-radius: 12px;
+            margin: 50px 0;
+        }
+
+        .cta-section h3 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #028090, #00a896);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 168, 150, 0.4);
+            border-color: #00d9ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 2px solid #028090;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #00a896;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #00d9ff;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8em; }
+            .subtitle { font-size: 1em; }
+            .diagram-section { padding: 20px; }
+            .mermaid { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Pre-Security & Network Fundamentals</h1>
+            <div class="header-divider"></div>
+            <p class="subtitle">Official Learning Roadmap</p>
+            <p class="institution">Kathmandu Don Bosco College (KDBC) - Cybersecurity & Networking Program</p>
+            <p class="tagline">
+                A comprehensive, beginner-friendly foundation in network security, system administration, and cybersecurity fundamentals through hands-on practical learning via TryHackMe free resources
+            </p>
+        </header>
+
+        <!-- Learning Pathway -->
+        <div class="diagram-section">
+            <h2>📊 Complete Learning Pathway</h2>
+            <div class="mermaid">
+graph TB
+    PRE["🎓 Pre-Security Foundation"]
+    
+    S1["1. Introduction to<br/>Cybersecurity"]
+    S2["2. Network<br/>Fundamentals"]
+    S3["3. How the Web<br/>Works"]
+    S4["4. Computer<br/>Systems"]
+    S5["5. Operating<br/>Systems"]
+    S6["6. Software &<br/>Programming"]
+    S7["7. Security<br/>Principles"]
+    
+    PRE --> S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7
+    
+    style PRE fill:#1e2761,stroke:#00a896,stroke-width:3px,color:#fff
+    style S1 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+    style S2 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+    style S3 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+    style S4 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+    style S5 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+    style S6 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+    style S7 fill:#028090,stroke:#00d9ff,stroke-width:2px,color:#fff
+            </div>
+        </div>
+
+        <!-- Learning Topics & Resources -->
+        <div class="diagram-section">
+            <h2>📚 Learning Topics & Resources</h2>
+            <p style="text-align: center; color: #b0b0b0; margin-bottom: 30px;">
+                Free TryHackMe rooms covering networking, cybersecurity principles, and system fundamentals
+            </p>
+            <div class="sections-grid">
+                <!-- Section 1 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">1</span>
+                        Introduction to Cybersecurity
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">🔴</div>
+                            <span class="room-name">Offensive Security Fundamentals</span>
+                            <a href="https://tryhackme.com/room/offensivesecurityintro" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔵</div>
+                            <span class="room-name">Defensive Security Essentials</span>
+                            <a href="https://tryhackme.com/room/defensivesecurityintro" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">💼</div>
+                            <span class="room-name">Cybersecurity Career Pathways</span>
+                            <a href="https://tryhackme.com/room/careersincyber" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">2</span>
+                        Network Fundamentals
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">🌐</div>
+                            <span class="room-name">Networking Principles & Architecture</span>
+                            <a href="https://tryhackme.com/room/whatisnetworking" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔀</div>
+                            <span class="room-name">Local Area Networks (LAN)</span>
+                            <a href="https://tryhackme.com/room/introtolan" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">📊</div>
+                            <span class="room-name">OSI Model & Network Layers</span>
+                            <a href="https://tryhackme.com/room/osimodelzi" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">📦</div>
+                            <span class="room-name">Packets, Frames & Data Transmission</span>
+                            <a href="https://tryhackme.com/room/packetsframes" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔌</div>
+                            <span class="room-name">Network Security & Expansion</span>
+                            <a href="https://tryhackme.com/room/extendingyournetwork" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">3</span>
+                        How the Web Works
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">📍</div>
+                            <span class="room-name">DNS Resolution & Domain Systems</span>
+                            <a href="https://tryhackme.com/room/dnsindetail" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">📨</div>
+                            <span class="room-name">HTTP Protocol & Web Communication</span>
+                            <a href="https://tryhackme.com/room/httpindetail" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🌍</div>
+                            <span class="room-name">Website Architecture & Components</span>
+                            <a href="https://tryhackme.com/room/howwebsiteswork" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔗</div>
+                            <span class="room-name">Complete Web Request Lifecycle</span>
+                            <a href="https://tryhackme.com/room/puttingitalltogether" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">4</span>
+                        Computer Systems & Hardware
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">🖥️</div>
+                            <span class="room-name">Computer Hardware & Components</span>
+                            <a href="https://tryhackme.com/room/insideacomputer" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">💻</div>
+                            <span class="room-name">Computer Types & Architectures</span>
+                            <a href="https://tryhackme.com/room/computertypes" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🤝</div>
+                            <span class="room-name">Client-Server Model & Architecture</span>
+                            <a href="https://tryhackme.com/room/clientserverbasics" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">📦</div>
+                            <span class="room-name">Virtualization Technologies</span>
+                            <a href="https://tryhackme.com/room/virtualisationbasics" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">☁️</div>
+                            <span class="room-name">Cloud Computing Fundamentals</span>
+                            <a href="https://tryhackme.com/room/cloudcomputingfundamentals" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">5</span>
+                        Operating Systems & Administration
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">⚙️</div>
+                            <span class="room-name">Operating System Fundamentals</span>
+                            <a href="https://tryhackme.com/room/operatingsystemsintroduction" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🪟</div>
+                            <span class="room-name">Windows System Administration</span>
+                            <a href="https://tryhackme.com/room/windowsbasics" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🐧</div>
+                            <span class="room-name">Linux Command Line Interface</span>
+                            <a href="https://tryhackme.com/room/linuxclibasics" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">⌨️</div>
+                            <span class="room-name">Windows Command Line Essentials</span>
+                            <a href="https://tryhackme.com/room/windowsclibasics" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔒</div>
+                            <span class="room-name">Operating System Security Practices</span>
+                            <a href="https://tryhackme.com/room/operatingsystemsecurity" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">6</span>
+                        Software & Programming Basics
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">💾</div>
+                            <span class="room-name">Data Representation & Number Systems</span>
+                            <a href="https://tryhackme.com/room/datarepresentation" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔤</div>
+                            <span class="room-name">Data Encoding Techniques</span>
+                            <a href="https://tryhackme.com/room/dataencoding" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🐍</div>
+                            <span class="room-name">Python Programming Introduction</span>
+                            <a href="https://tryhackme.com/room/pythonsimpledemo" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">📜</div>
+                            <span class="room-name">JavaScript Fundamentals</span>
+                            <a href="https://tryhackme.com/room/javascriptsimpledemo" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🗄️</div>
+                            <span class="room-name">Database & SQL Fundamentals</span>
+                            <a href="https://tryhackme.com/room/databasesqlbasics" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7 -->
+                <div class="section-card">
+                    <div class="section-title">
+                        <span class="section-number">7</span>
+                        Security Principles & Cryptography
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room-item">
+                            <div class="room-icon">🛡️</div>
+                            <span class="room-name">The CIA Triad Security Model</span>
+                            <a href="https://tryhackme.com/room/theciatriad" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔐</div>
+                            <span class="room-name">Cryptography & Encryption Concepts</span>
+                            <a href="https://tryhackme.com/room/cryptographyconcepts" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔴</div>
+                            <span class="room-name">Offensive Security Pathway</span>
+                            <a href="https://tryhackme.com/room/becomeahacker" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                        <div class="room-item">
+                            <div class="room-icon">🔵</div>
+                            <span class="room-name">Defensive Security Pathway</span>
+                            <a href="https://tryhackme.com/room/becomeadefender" target="_blank" class="room-link">Learn ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Essential Tools -->
+        <div class="tools-section">
+            <h2>🛠️ Essential Free Tools & Commands</h2>
+            <p style="text-align: center; color: #b0b0b0; margin-bottom: 30px;">
+                Command-line tools for network reconnaissance, DNS queries, and network analysis
+            </p>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🎯</span>
+                        <h3>NMAP - Network Scanner</h3>
+                    </div>
+                    <p class="tool-description">Port scanning, service detection, network reconnaissance</p>
+                    <div class="command-section">
+                        <div class="command-box">
+                            <code>nmap -sV target.com</code>
+                            <div class="cmd-desc">Scan ports with service versions</div>
+                        </div>
+                        <div class="command-box">
+                            <code>nmap -A -T4 target.com</code>
+                            <div class="cmd-desc">Aggressive scan with OS detection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">📍</span>
+                        <h3>NSLOOKUP - DNS Resolver</h3>
+                    </div>
+                    <p class="tool-description">Query DNS records, resolve domains to IP addresses</p>
+                    <div class="command-section">
+                        <div class="command-box">
+                            <code>nslookup google.com</code>
+                            <div class="cmd-desc">Resolve domain to IP address</div>
+                        </div>
+                        <div class="command-box">
+                            <code>nslookup -type=MX google.com</code>
+                            <div class="cmd-desc">Find mail exchange records</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🔍</span>
+                        <h3>DIG - Advanced DNS Queries</h3>
+                    </div>
+                    <p class="tool-description">Detailed DNS lookup and zone transfer attempts</p>
+                    <div class="command-section">
+                        <div class="command-box">
+                            <code>dig google.com A</code>
+                            <div class="cmd-desc">Query A records from DNS</div>
+                        </div>
+                        <div class="command-box">
+                            <code>dig @8.8.8.8 google.com</code>
+                            <div class="cmd-desc">Query specific DNS server</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">📁</span>
+                        <h3>Dirsearch - Directory Brute Force</h3>
+                    </div>
+                    <p class="tool-description">Find hidden directories and files on web servers</p>
+                    <div class="command-section">
+                        <div class="command-box">
+                            <code>dirsearch -u http://target.com</code>
+                            <div class="cmd-desc">Scan for common directories</div>
+                        </div>
+                        <div class="command-box">
+                            <code>dirsearch -u http://target.com -e php,html</code>
+                            <div class="cmd-desc">Scan specific file extensions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🌐</span>
+                        <h3>CURL - HTTP Client</h3>
+                    </div>
+                    <p class="tool-description">Make HTTP requests, test APIs, retrieve web content</p>
+                    <div class="command-section">
+                        <div class="command-box">
+                            <code>curl http://target.com</code>
+                            <div class="cmd-desc">Simple GET request</div>
+                        </div>
+                        <div class="command-box">
+                            <code>curl -I http://target.com</code>
+                            <div class="cmd-desc">Show headers only</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">📊</span>
+                        <h3>Wireshark - Packet Analyzer</h3>
+                    </div>
+                    <p class="tool-description">Capture and analyze network traffic in real-time</p>
+                    <div class="command-section">
+                        <div class="command-box">
+                            <span class="cmd-desc">✓ Capture live packets on any network interface</span>
+                        </div>
+                        <div class="command-box">
+                            <span class="cmd-desc">✓ Filter by protocol (HTTP, DNS, TCP, UDP)</span>
+                        </div>
+                        <div class="command-box">
+                            <span class="cmd-desc">✓ Follow TCP streams and inspect payloads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Outcomes -->
+        <div class="skills-section">
+            <h3>🎯 Competencies Upon Completion</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Network Architecture</strong>
+                    <p>Understanding TCP/IP protocols, routing, switching, and network security fundamentals</p>
+                </div>
+                <div class="skill-item">
+                    <strong>Web Fundamentals</strong>
+                    <p>DNS resolution, HTTP/HTTPS protocols, and client-server communication models</p>
+                </div>
+                <div class="skill-item">
+                    <strong>System Administration</strong>
+                    <p>Windows and Linux operating system basics, command-line proficiency, security hardening</p>
+                </div>
+                <div class="skill-item">
+                    <strong>Security Principles</strong>
+                    <p>CIA Triad, cryptography concepts, access control, and threat identification</p>
+                </div>
+                <div class="skill-item">
+                    <strong>Programming Basics</strong>
+                    <p>Python and JavaScript fundamentals, SQL databases, and data representation</p>
+                </div>
+                <div class="skill-item">
+                    <strong>Practical Tools</strong>
+                    <p>Hands-on experience with network analysis tools (nmap, dig, nslookup, wireshark)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Learning Paths -->
+        <div class="future-section">
+            <h3>🔮 Advanced Learning Paths (After Pre-Security)</h3>
+            <p style="color: #b0b0b0; margin-bottom: 20px;">
+                Upon completing the pre-security fundamentals, students may progress to:
+            </p>
+            <div class="future-item">
+                <strong>CTF Competitions & Beginner Labs</strong>
+                <p>Hands-on hacking challenges and Capture The Flag exercises to apply learned concepts</p>
+            </div>
+            <div class="future-item">
+                <strong>PortSwigger Web Security Academy</strong>
+                <p>Free web security training covering OWASP vulnerabilities and application security</p>
+            </div>
+            <div class="future-item">
+                <strong>Burp Suite Labs (Free Edition)</strong>
+                <p>Web application security testing tools and practical exploitation exercises</p>
+            </div>
+            <div class="future-item">
+                <strong>Advanced Networking & Penetration Testing</strong>
+                <p>Professional certifications and specialized security domain training</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h3>Begin Your Learning Journey</h3>
+            <p style="margin-bottom: 30px; color: #b0b0b0; font-size: 1em;">
+                Start with the Pre-Security path on TryHackMe. All resources are free and self-paced.
+            </p>
+            <a href="https://tryhackme.com/path/outline/presecurity" target="_blank" class="cta-button">
+                Access Pre-Security Path →
+            </a>
+            <a href="https://tryhackme.com/signup" target="_blank" class="cta-button">
+                Create Free Account →
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>KDBC Cybersecurity & Networking Program</strong></p>
+            <p style="margin: 15px 0;">Pre-Security Foundation Roadmap | Self-Paced Learning | Free Resources</p>
+            <p style="font-size: 0.9em; margin-top: 20px;">
+                Official Path: <a href="https://tryhackme.com/path/outline/presecurity">tryhackme.com/path/presecurity</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'dark',
+            securityLevel: 'loose'
+        });
+        mermaid.contentLoaded();
+    </script>
+</body>
+</html>
